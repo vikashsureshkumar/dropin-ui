@@ -1,0 +1,83 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Braintree Drop-in Example</title>
+
+  <!-- Link to Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- Braintree Drop-in JavaScript library -->
+  <script src="https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.min.js"></script>
+
+  <!-- Link to custom JavaScript file -->
+  <script src="script.js" defer></script>
+
+  <!-- Link to custom CSS file -->
+  <link rel="stylesheet" href="script.css">
+</head>
+<body>
+  <h1>3D Secure v2.0 SDK with Drop-in</h1>
+  <hr>
+
+  <!-- Form for collecting payment information -->
+  <form action="javascript:void(0)" class="container">
+    <!-- Introduction and instructions -->
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="lead">This is a functional example of performing 3D Secure verification on a credit card tokenized with Drop-in.</p>
+      </div>
+    </div>
+
+    <!-- Button to autofill customer information -->
+    <div class="row">
+      <div class="col-xs-12">
+        <p>For this demo, you may populate the fields with fake customer information.</p>
+        <button class="btn btn-warning" id="autofill">Autofill Customer Information</button>
+      </div>
+    </div>
+
+    <!-- Billing information fields -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <span id="help-email" class="help-block"></span>
+        </div>
+        <div class="form-group">
+          <label for="billing-phone">Billing phone number</label>
+          <input type="text" class="form-control" id="billing-phone" placeholder="123-456-7890">
+          <span id="help-billing-phone" class="help-block"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display nonce after payment is processed -->
+    <div class="col-xs-12 nonce-group hidden">
+      <p class="lead">Payment method nonce received:</p>
+      <div class="input-group">
+        <span class="input-group-addon lead"></span>
+        <input readonly name="nonce" class="form-control">
+      </div>
+      <br>
+      <p class="lead">Reload the page to try another card.</p>
+      <br>
+    </div>
+
+    <!-- Braintree Drop-in UI container and Pay button -->
+    <div class="input-group pay-group bt-drop-in-container">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- Container for Braintree Drop-in UI -->
+          <div id="drop-in"></div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Pay button, initially disabled -->
+        <input disabled id="pay-btn" class="btn btn-success" type="submit" value="Loading...">
+      </div>
+    </div>
+  </form>
+</body>
+</html>
